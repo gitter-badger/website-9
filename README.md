@@ -6,23 +6,30 @@ create Virtual environment using `virtualenv env` and activate by `source env/bi
 
 Then download the source `git clone http://github.com/rajasimon/website`
 
-```
-/Users/simon/Freelancer/
+`/Users/simon/Freelancer/
 ---env
 ---website
   |__account ( user accounts )
   |__frontend ( Main page and css and js all...)
   |__website ( Actual Project root folder)
-  manage.py
-```
+  manage.py`
 
 Do the migration `python manage.py migrate`
 
 Run using `python manage.py runserver`
 
-Note:
+Note for social add  `/etc/hosts` `website.com:8000`  
   For the facebook
+  ```
   export FACEBOOK_KEY=1234556
   export FACEBOOK_SECRET=12352454
+  ```
 
-  Same as GOOGLE Plus
+  Same With Google Plus
+    ```
+    export GOOGLE_KEY=234234234
+    export GOOGLE_SECRET=2342342352
+    * enable Google plus api in google developer console
+    * Redirect URIs	http://website.com:8000/complete/google-oauth2/
+    *  JavaScript origins	http://website.com:8000
+    ```
