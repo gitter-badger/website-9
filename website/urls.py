@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('frontend.urls', namespace='frontend')),
     url(r'^account/', include('account.urls', namespace='account')),
+    url('', include('social.apps.django_app.urls', namespace='social'))
 ]

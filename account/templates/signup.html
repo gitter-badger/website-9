@@ -2,28 +2,36 @@
 
 {% block main-content %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-  <div class="form-group">
-    {{ form.errors }}
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required autofocus>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  </div>
+<div class="row">
+  <div class="col-md-8" id="divider">
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+      <div class="form-group">
+        {{ form.errors }}
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required autofocus>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">First Name</label>
-    <input type="text" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Last Name</label>
-    <input type="text" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
+  <div class="col-md-4" id="socialButton">
+      <a class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}" role="button">facebook</a>
+      <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}" role="button">Google Plus</a>
+    </div>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<br/>
+  <br/>
 
 {% endblock main-content %}

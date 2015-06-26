@@ -1,5 +1,14 @@
 .dropdown-menu {
 	min-width: 300px;
 	padding-left: 5px;
-  	padding-right: 5px;
+  padding-right: 5px;
+}
+
+#divider {
+	border-right: 1px dashed #333;
+}
+
+#socialButton {
+	text-align: center;
+	padding-top: 20%;
 }

@@ -17,3 +17,10 @@ Then download the source `git clone http://github.com/rajasimon/website`
 Do the migration `python manage.py migrate`
 
 Run using `python manage.py runserver`
+
+Note:
+  For the facebook
+  export FACEBOOK_KEY=1234556
+  export FACEBOOK_SECRET=12352454
+
+  Same as GOOGLE Plus

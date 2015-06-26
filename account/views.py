@@ -79,3 +79,9 @@ def logout_view(request):
     messages.success(request, 'You are successfully logged out.')
     logout(request)
     return HttpResponseRedirect(reverse('frontend:home'))
+
+
+def home(request):
+    context = {}
+    template = 'home.html'
+    return render(request, template, context)
