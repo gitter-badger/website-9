@@ -2,26 +2,28 @@
 
 {% block main-content %}
 
-<form>
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
   <div class="form-group">
+    {{ form.errors }}
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required autofocus>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="text" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
+    <label for="exampleInputEmail1">Last Name</label>
+    <input type="text" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+<br/>
 
 {% endblock main-content %}
