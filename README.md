@@ -26,10 +26,10 @@ Note for social add  `/etc/hosts` `website.com:8000`
   ```
 
   Same With Google Plus
-    ```
-    export GOOGLE_KEY=234234234
-    export GOOGLE_SECRET=2342342352
-    * enable Google plus api in google developer console
-    * Redirect URIs	http://website.com:8000/complete/google-oauth2/
-    *  JavaScript origins	http://website.com:8000
-    ```
+  ```
+  export GOOGLE_KEY=234234234
+  export GOOGLE_SECRET=2342342352
+  * enable Google plus api in google developer console
+  * Redirect URIs	http://website.com:8000/complete/google-oauth2/
+  *  JavaScript origins	http://website.com:8000
+  ```
