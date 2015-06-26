@@ -6,13 +6,15 @@ create Virtual environment using `virtualenv env` and activate by `source env/bi
 
 Then download the source `git clone http://github.com/rajasimon/website`
 
-`/Users/simon/Freelancer/
+```
+/Users/simon/Freelancer/
 ---env
 ---website
   |__account ( user accounts )
   |__frontend ( Main page and css and js all...)
   |__website ( Actual Project root folder)
-  manage.py`
+  manage.py
+  ```
 
 Do the migration `python manage.py migrate`
 
