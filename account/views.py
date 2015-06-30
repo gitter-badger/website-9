@@ -97,3 +97,7 @@ def home(request):
     context = {}
     template = 'home.html'
     return render(request, template, context)
+
+
+def user_detail(request):
+    return render(request, 'user-detail.html')
