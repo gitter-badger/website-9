@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 # Django extras
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 # User auth
 from django.contrib.auth import get_user_model
@@ -44,11 +45,17 @@ def signup(request):
             username = generate_random_username()
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            new = User.objects.create_user(username, email, password)
-            new.first_name = form.cleaned_data['first_name']
-            new.last_name = form.cleaned_data['last_name']
-            new.save()
-            return HttpResponseRedirect(reverse('frontend:home'))
+            try:
+                user = User.objects.get(email=email)
+                messages.warning(request, 'This email address already in use.')
+                return HttpResponseRedirect(reverse('frontend:home'))
+            except ObjectDoesNotExist:
+                new = User.objects.create_user(username, email, password)
+                new.first_name = form.cleaned_data['first_name']
+                new.last_name = form.cleaned_data['last_name']
+                new.save()
+                messages.success(request, 'Your account created successfully.')
+                return HttpResponseRedirect(reverse('frontend:home'))
     	else:
     		print form.errors
     else:
@@ -61,15 +68,20 @@ def login_view(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user_obj = User.objects.get(email=email)
-            user = authenticate(username = user_obj.username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    messages.success(request, 'You are successfully logged in.')
-                    return HttpResponseRedirect(reverse('frontend:home'))
-                else:
-                    return HttpResponse('Your Account is invalid')
+            try:
+                user_obj = User.objects.get(email=email)
+                user = authenticate(username = user_obj.username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        login(request, user)
+                        messages.success(request, 'You are successfully logged in.')
+                        return HttpResponseRedirect(reverse('frontend:home'))
+                    else:
+                        return HttpResponse('Your Account is invalid')
+            except ObjectDoesNotExist:
+                messages.warning(request, 'You are not created account.')
+                return HttpResponseRedirect(reverse('frontend:home'))
+
         else:
             print form.errors
     else:
