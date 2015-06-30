@@ -1,6 +1,6 @@
 WEBSITE
 
-How to Run:
+**How to Run:**
 
 create Virtual environment using `virtualenv env` and activate by `source env/bin/activate`
 
@@ -20,7 +20,9 @@ Do the migration `python manage.py migrate`
 
 Run using `python manage.py runserver`
 
-Note for social add  `/etc/hosts` `website.com:8000`  
+**Note for social login**
+
+add  `/etc/hosts` `website.com:8000`  
   For the facebook
   ```
   export FACEBOOK_KEY=1234556
