@@ -78,6 +78,9 @@ def login_view(request):
                         return HttpResponseRedirect(reverse('frontend:home'))
                     else:
                         return HttpResponse('Your Account is invalid')
+                else:
+                    messages.warning(request, 'You are use correct email/password.')
+                    return HttpResponseRedirect(reverse('frontend:home'))
             except ObjectDoesNotExist:
                 messages.warning(request, 'You are not created account.')
                 return HttpResponseRedirect(reverse('frontend:home'))
