@@ -1,5 +1,6 @@
 # From python
 from pprint import pprint
+import ipdb
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -63,6 +64,7 @@ def signup(request):
     return render(request, 'signup.html', {'form':form})
 
 def login_view(request):
+    # ipdb.set_trace()
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load avatar_tags %}
 {% block main-content %}
 <div class="row">
   <div class="col-md-4">
-    <img src="{% static 'images/avatar.svg' %}" class="img-circle">
+    {% avatar user %}
+      <a  href="{% url 'avatar_change' %}">Update Profile Picture</a>
   </div>
   <div class="col-md-8">
     <dl class="dl-horizontal">

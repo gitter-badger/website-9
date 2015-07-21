@@ -10,5 +10,6 @@ urlpatterns = [
 	url(r'^', include('frontend.urls', namespace='frontend')),
 	url(r'^account/', include('account.urls', namespace='account')),
 	url(r'^webinar/', include('webinar.urls', namespace='webinar')),
-	url('', include('social.apps.django_app.urls', namespace='social'))
+	url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^avatar/', include('avatar.urls')),
 ]

@@ -37,10 +37,12 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+    'django_extensions',
 	'frontend',
 	'account',
 	'webinar',
-	'social.apps.django_app.default'
+	'social.apps.django_app.default',
+    'avatar',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -142,3 +144,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#https://docs.djangoproject.com/en/1.8/ref/settings/#media-root
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = 'media/'
+
