@@ -8,7 +8,7 @@ urlpatterns = [
 
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^', include('frontend.urls', namespace='frontend')),
-	url(r'^account/', include('account.urls', namespace='account')),
+	url(r'^accounts/', include('account.urls', namespace='accounts')),
 	url(r'^webinar/', include('webinar.urls', namespace='webinar')),
 	url('', include('social.apps.django_app.urls', namespace='social'))
 ]
