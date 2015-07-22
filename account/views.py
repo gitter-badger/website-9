@@ -13,12 +13,16 @@ from django.core.exceptions import ObjectDoesNotExist
 # User auth
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Models import
 from django.contrib.auth.models import User
 
 # Form import
 from .forms import UserForm, LoginForm
+
+# Model import 
+from .models import Profile
 
 # Random Username
 from random import choice
@@ -39,6 +43,7 @@ def generate_random_username(length=16, chars=ascii_lowercase+digits, split=4, d
 
 # Create your views here.
 def signup(request):
+    # ipdb.set_trace()
     if request.method == 'POST':
     	form = UserForm(request.POST)
     	if form.is_valid():
@@ -55,6 +60,9 @@ def signup(request):
                 new.first_name = form.cleaned_data['first_name']
                 new.last_name = form.cleaned_data['last_name']
                 new.save()
+                # New Profile
+                new_profile = Profile(user_id = new.id, profile_type=request.POST['type_class'])
+                new_profile.save()
                 messages.success(request, 'Your account created successfully.')
                 return HttpResponseRedirect(reverse('frontend:home'))
     	else:
@@ -77,9 +85,12 @@ def login_view(request):
                     if user.is_active:
                         login(request, user)
                         messages.success(request, 'You are successfully logged in.')
-                        return HttpResponseRedirect(reverse('frontend:home'))
+                        return HttpResponseRedirect(reverse('accounts:user_detail'))
                     else:
                         return HttpResponse('Your Account is invalid')
+                else:
+                    messages.warning(request, 'You are use correct email/password.')
+                    return HttpResponseRedirect(reverse('frontend:home'))
             except ObjectDoesNotExist:
                 messages.warning(request, 'You are not created account.')
                 return HttpResponseRedirect(reverse('frontend:home'))
@@ -87,7 +98,7 @@ def login_view(request):
         else:
             print form.errors
     else:
-        return HttpResponseRedirect(reverse('frontend:home'))
+        return render(request, 'login.html')
 
 def logout_view(request):
     messages.success(request, 'You are successfully logged out.')
@@ -100,6 +111,8 @@ def home(request):
     template = 'home.html'
     return render(request, template, context)
 
-
+@login_required(redirect_field_name='/account/login/')
 def user_detail(request):
-    return render(request, 'user-detail.html')
+    # ipdb.set_trace()
+    profile = Profile.objects.get(user_id=request.user.id)
+    return render(request, 'user-detail.html', {'profile':profile})

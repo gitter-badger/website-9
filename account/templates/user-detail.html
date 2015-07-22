@@ -1,21 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% load avatar_tags %}
 {% block main-content %}
-<div class="row">
-  <div class="col-md-4">
-    {% avatar user %}
-      <a  href="{% url 'avatar_change' %}">Update Profile Picture</a>
-  </div>
-  <div class="col-md-8">
-    <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd>{{ request.user.email }}</dd>
-      <dt>Rating</dt>
-      <dd>star rating</dd>
-    </dl>
-  </div>
-</div>
-<h2>Courses Delivered</h2>
-<h2>Courses Attended</h2>
+  {% if profile.profile_type == 'ST' %}
+    {% include "student-details.html" %}
+  {% else %}
+    {% include "institute-details.html" %}
+  {% endif %}
 {% endblock main-content %}

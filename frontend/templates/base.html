@@ -28,8 +28,8 @@
             <nav>
               {% if request.user.is_authenticated %}
                 <ul class="nav nav-pills pull-right">
-                  <li role="presentation" class="{% active_page request 'user_detail' %}"><a href="{% url 'account:user_detail' %}">{{ request.user.email }}</a></li>
-                  <li role="presentation" class="{% active_page request 'logout' %}"><a href="{% url 'account:logout' %}">Logout</a></li>
+                  <li role="presentation" class="{% active_page request 'user_detail' %}"><a href="{% url 'accounts:user_detail' %}">{{ request.user.email }}</a></li>
+                  <li role="presentation" class="{% active_page request 'logout' %}"><a href="{% url 'accounts:logout' %}">Logout</a></li>
                 </ul>
               {% else %}
               <ul class="nav nav-pills pull-right">
@@ -40,7 +40,7 @@
                   {% include 'login.html' %}
                   </ul>
                 </li>
-                <li role="presentation" class="{% active_page request 'signup' %}"><a href="{% url 'account:signup' %}">Sign Up</a></li>
+                <li role="presentation" class="{% active_page request 'signup' %}"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
               </ul>
               {% endif %}
             </nav>
