@@ -10,6 +10,8 @@ Then download the source `git clone http://github.com/rajasimon/website`
 /Users/simon/Freelancer/
 ---env
 ---website
+
+[![Join the chat at https://gitter.im/rajasimon/website](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rajasimon/website?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
   |__account ( user accounts )
   |__frontend ( Main page and css and js all...)
   |__website ( Actual Project root folder)
